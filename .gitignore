@@ -1,0 +1,5 @@
+/library/__pycache__
+/.ipynb_checkpoints
+/library/.ipynb_checkpoints
+/logs/fit/20221020-190426/train/events.out.tfevents.1666303467.fernando-Inspiron-7580.11334.0.v2
+/logs/fit/20221020-190426/validation/events.out.tfevents.1666305456.fernando-Inspiron-7580.11334.1.v2
