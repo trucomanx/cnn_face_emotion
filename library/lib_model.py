@@ -10,8 +10,111 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import keras.backend as K
+from tensorflow import Tensor
 
+def residual_block1( x:           Tensor,
+                    filters_output, 
+                    filters_hidden: int = 16, 
+                    kernel_size:    int = 7,
+                    alpha=0.05) -> Tensor:
+    
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_hidden,
+                               padding     = "same")(x);
+    y = tf.keras.layers.LeakyReLU(alpha=alpha)(y);
+    
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_hidden,
+                               padding     = "same")(x);
+    y = tf.keras.layers.LeakyReLU(alpha=alpha)(y);
 
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_output,
+                               padding     = "same")(x);
+    
+    out = tf.keras.layers.Add()([x, y]);
+    
+    out = tf.keras.layers.LeakyReLU(alpha=alpha)(out);
+    
+    out = tf.keras.layers.BatchNormalization()(out);
+    
+    return out;
+    
+def create_model_residual1(enable_summary=True,Nout=14):
+    target_size=(256,256);
+    n_filters=14;
+    nh_filters=7;
+    
+    
+    inputs = tf.keras.layers.Input(shape=(target_size[0],target_size[1], 3));
+    
+    ########
+    t = tf.keras.layers.Conv2D(kernel_size = 7,
+                               strides     = 1,
+                               filters     = n_filters,
+                               activation  = "relu",
+                               padding     = "same")(inputs);
+    ########
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 7);
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 7);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = residual_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = tf.keras.layers.Flatten()(t);
+    
+    outputs = tf.keras.layers.Dense(Nout, activation='tanh')(t);
+    
+    model = tf.keras.models.Model(inputs, outputs);
+    
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy']);
+    
+    if enable_summary:
+        model.summary();
+    
+    return model, target_size;
+    
 def create_model_custom_inception(file_of_weight=''):
     '''
     Retorna un modelo para la clasificación.
@@ -71,6 +174,8 @@ def create_model_custom1(file_of_weight=''):
         tf.keras.layers.Conv2D(  4, kernel_size=7, padding="same", activation='relu'),
         tf.keras.layers.MaxPooling2D( pool_size=(2, 2)),
         
+        tf.keras.layers.BatchNormalization(),
+        
         tf.keras.layers.Conv2D( 16, kernel_size=7, padding="same", activation='relu'),
         tf.keras.layers.Conv2D(  4, kernel_size=5, padding="same", activation='relu'),
         tf.keras.layers.MaxPooling2D( pool_size=(2, 2)),
@@ -79,12 +184,14 @@ def create_model_custom1(file_of_weight=''):
         tf.keras.layers.Conv2D(  4, kernel_size=3, padding="same", activation='relu'),
         tf.keras.layers.MaxPooling2D( pool_size=(2, 2)),
         
+        tf.keras.layers.BatchNormalization(),
+        
         tf.keras.layers.Conv2D( 16, kernel_size=3, padding="same", activation='relu'),
         tf.keras.layers.Conv2D(  4, kernel_size=3, padding="same", activation='relu'),
         tf.keras.layers.MaxPooling2D( pool_size=(2, 2)),
         
         tf.keras.layers.Conv2D( 16, kernel_size=3, padding="same", activation='relu'),
-        tf.keras.layers.Conv2D( 4, kernel_size=3, padding="same", activation='relu'),
+        tf.keras.layers.Conv2D( 8, kernel_size=3, padding="same", activation='relu'),
         
         tf.keras.layers.Flatten(),
         
@@ -146,6 +253,9 @@ def create_model(file_of_weight='',model_type='mobilenet_v2'):
         multiple_layers, target_size = create_model_custom1(file_of_weight='');
         multiple_layers.trainable =True; #False
         print("Loaded layer with custom1");
+    elif model_type=='custom_residual1':
+        multiple_layers, target_size = create_model_residual1(enable_summary=True,Nout=16);
+        print("Loaded layer with custom_residual1");
     elif model_type=='custom_inception':
         multiple_layers, target_size = create_model_custom_inception(file_of_weight='');
         print("Loaded layer with custom1");
