@@ -12,6 +12,116 @@ import matplotlib.pyplot as plt
 import keras.backend as K
 from tensorflow import Tensor
 
+def dense_block1( x:           Tensor,
+                    filters_output, 
+                    filters_hidden: int = 16, 
+                    kernel_size:    int = 7,
+                    alpha=0.05) -> Tensor:
+    
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_hidden,
+                               padding     = "same")(x);
+    y = tf.keras.layers.LeakyReLU(alpha=alpha)(y);
+    
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_hidden,
+                               padding     = "same")(x);
+    y = tf.keras.layers.LeakyReLU(alpha=alpha)(y);
+
+    ##
+    y = tf.keras.layers.Conv2D(kernel_size = kernel_size,
+                               strides     = 1,
+                               filters     = filters_output,
+                               padding     = "same")(x);
+    y = tf.keras.layers.LeakyReLU(alpha=alpha)(y);
+    
+    out = tf.keras.layers.Concatenate(axis=-1)([x, y])
+    
+    out = tf.keras.layers.BatchNormalization()(out);
+    
+    return out;
+
+def create_model_dense1(enable_summary=True,Nout=14):
+    target_size=(256,256);
+    n_filters=7;
+    nh_filters=7;
+    
+    
+    inputs = tf.keras.layers.Input(shape=(target_size[0],target_size[1], 3));
+    
+    ########
+    t = tf.keras.layers.Conv2D(kernel_size = 5,
+                               strides     = 1,
+                               filters     = n_filters,
+                               activation  = "relu",
+                               padding     = "same")(inputs);
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 5);
+    
+    t = tf.keras.layers.MaxPooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = tf.keras.layers.AveragePooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = tf.keras.layers.AveragePooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = dense_block1( t, filters_output = n_filters, filters_hidden = nh_filters, kernel_size = 3);
+    
+    t = tf.keras.layers.AveragePooling2D(pool_size=2)(t);
+    
+    ########
+    
+    t = tf.keras.layers.Flatten()(t);
+    
+    outputs = tf.keras.layers.Dense(Nout, activation='tanh')(t);
+    
+    model = tf.keras.models.Model(inputs, outputs);
+    
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy']);
+    
+    if enable_summary:
+        model.summary();
+    
+    return model, target_size;
+
 def residual_block1( x:           Tensor,
                     filters_output, 
                     filters_hidden: int = 16, 
@@ -253,6 +363,9 @@ def create_model(file_of_weight='',model_type='mobilenet_v2'):
         multiple_layers, target_size = create_model_custom1(file_of_weight='');
         multiple_layers.trainable =True; #False
         print("Loaded layer with custom1");
+    elif model_type=='custom_dense1':
+        multiple_layers, target_size = create_model_dense1(enable_summary=True,Nout=16);
+        print("Loaded layer with custom_dense1");
     elif model_type=='custom_residual1':
         multiple_layers, target_size = create_model_residual1(enable_summary=True,Nout=16);
         print("Loaded layer with custom_residual1");
