@@ -2,3 +2,4 @@
 /.ipynb_checkpoints
 /library/.ipynb_checkpoints
 /logs/fit
+kfold_validation.py
