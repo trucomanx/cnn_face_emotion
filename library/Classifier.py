@@ -1,15 +1,16 @@
 #!/usr/bin/python
 
 import os
-import lib_model_patient_people as mpp
+import lib_model as mpp
 import PIL
 
-class PatientClassifier:
+class FaceEmotionClassifier:
     def __init__(self,model_type='efficientnet_b3'):
         checkpoint_path='';
         self.model_type=model_type;
         
-        if self.model_type=='mobilenet_v3':
+        print('Loading model:',self.model_type)
+        if   self.model_type=='mobilenet_v3':
             checkpoint_path=os.path.join('models','modelo_mobilenet_v3.h5');
         elif self.model_type=='resnet_v2_50':
             checkpoint_path=os.path.join('models','modelo_resnet_v2_50.h5');
@@ -22,10 +23,12 @@ class PatientClassifier:
         else:
             raise TypeError("Unknown parameter model_type");
         
+        print('Model',self.model_type,'loaded.')
+
         path = os.path.dirname(__file__)
         path = os.path.join(path,checkpoint_path);
         
-        self.modelo, self.target_size=mpp.create_model_patient_people(path,model_type=self.model_type);
+        self.modelo, self.target_size=mpp.create_model(path,model_type=self.model_type);
     
     def is_file_patient(self,imgfilepath):
         return mpp.evaluate_model_from_file(self.modelo,imgfilepath, target_size=self.target_size);
