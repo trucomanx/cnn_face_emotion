@@ -11,15 +11,15 @@ class FaceEmotionClassifier:
         
         print('Loading model:',self.model_type)
         if   self.model_type=='mobilenet_v3':
-            checkpoint_path=os.path.join('models','modelo_mobilenet_v3.h5');
+            checkpoint_path=os.path.join('models','model_mobilenet_v3.h5');
         elif self.model_type=='resnet_v2_50':
-            checkpoint_path=os.path.join('models','modelo_resnet_v2_50.h5');
+            checkpoint_path=os.path.join('models','model_resnet_v2_50.h5');
         elif self.model_type=='efficientnet_b3':
-            checkpoint_path=os.path.join('models','modelo_efficientnet_b3.h5');
+            checkpoint_path=os.path.join('models','model_efficientnet_b3.h5');
         elif self.model_type=='inception_v3':
-            checkpoint_path=os.path.join('models','modelo_inception_v3.h5');
+            checkpoint_path=os.path.join('models','model_inception_v3.h5');
         elif self.model_type=='inception_resnet_v2':
-            checkpoint_path=os.path.join('models','modelo_inception_resnet_v2.h5');
+            checkpoint_path=os.path.join('models','model_inception_resnet_v2.h5');
         else:
             raise TypeError("Unknown parameter model_type");
         
