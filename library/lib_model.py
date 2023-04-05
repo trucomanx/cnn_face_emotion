@@ -319,7 +319,7 @@ def create_model_custom1(file_of_weight=''):
     return modelo, target_size
     
     
-def create_model(file_of_weight='',model_type='mobilenet_v2'):
+def create_model(file_of_weight='',model_type='mobilenet_v3',nout=7):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
@@ -387,7 +387,7 @@ def create_model(file_of_weight='',model_type='mobilenet_v2'):
     modelo = tf.keras.Sequential([
         multiple_layers,
         tf.keras.layers.Dense(32,activation='tanh'),
-        tf.keras.layers.Dense(7,activation='softmax')
+        tf.keras.layers.Dense(nout,activation='softmax')
     ])
     
     #if os.path.exists(file_of_weight):
