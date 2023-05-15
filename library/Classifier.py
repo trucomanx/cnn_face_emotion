@@ -30,9 +30,9 @@ class FaceEmotionClassifier:
         
         self.modelo, self.target_size=mpp.create_model(path,model_type=self.model_type);
     
-    def is_file_patient(self,imgfilepath):
+    def get_face_emotion_id_from_file(self,imgfilepath):
         return mpp.evaluate_model_from_file(self.modelo,imgfilepath, target_size=self.target_size);
 
-    def is_pil_patient(self,img_pil):
+    def get_face_emotion_id_from_pil(self,img_pil):
         return mpp.evaluate_model_from_pil(self.modelo,img_pil, target_size=self.target_size);
     
