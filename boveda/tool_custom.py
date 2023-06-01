@@ -45,14 +45,8 @@ for n in range(len(sys.argv)):
 
 print('model_type:',model_type)
 
-
-# # Endereços
-
-# In[4]:
-
-
 ## Input   
-input_dir = '/mnt/boveda/DATASETs/FACE-EMOTION/mcfer_v1.0/archive/train/angry';
+input_dir = '/mnt/boveda/DATASETs/FACE-EMOTION/mcfer_v1.0/archive/test/neutral';
 print('input_dir:',input_dir)
 
 ## Output
