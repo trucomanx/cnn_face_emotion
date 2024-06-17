@@ -1,0 +1,4 @@
+cuda
+cuda-drivers
+nvidia-cuda-dev
+nvidia-cuda-toolkit

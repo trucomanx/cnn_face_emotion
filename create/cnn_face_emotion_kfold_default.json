@@ -1,0 +1,11 @@
+{
+    "dataset_base_dir" : "/media/fernando/B0EA304AEA300EDA/Dados/Fernando/DATASET",
+    "dataset_labels_file" : "training_labels.csv",
+    "dataset_name" : "fer2013",
+    "model_type" : "mobilenet_v3",
+    "kfold" : 5,
+    "batch_size" : 4,
+    "epochs" : 100,
+    "enable_stratified": true,
+    "output_base_dir" : "/media/fernando/Expansion/OUTPUTS/DOCTORADO2/cnn_emotion4"
+}
