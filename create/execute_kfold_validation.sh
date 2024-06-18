@@ -68,10 +68,10 @@ python3 kfold_validation.py --model 'efficientnet_b3'     --epochs 100  --batch-
 python3 kfold_validation.py --model 'inception_v3'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 python3 kfold_validation.py --model 'inception_resnet_v2' --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 python3 kfold_validation.py --model 'resnet_v2_50'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
-#python3 kfold_validation.py --model 'custom1'             --epochs 200 --batch-size 64 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir 
-#python3 kfold_validation.py --model 'custom_dense1'       --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
-#python3 kfold_validation.py --model 'custom_residual1'    --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
-#python3 kfold_validation.py --model 'custom_inception'    --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
+##python3 kfold_validation.py --model 'custom1'             --epochs 200 --batch-size 64 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir 
+##python3 kfold_validation.py --model 'custom_dense1'       --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
+##python3 kfold_validation.py --model 'custom_residual1'    --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
+##python3 kfold_validation.py --model 'custom_inception'    --epochs 50  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 
 rm -f kfold_validation.py
 
