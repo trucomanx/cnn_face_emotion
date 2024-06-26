@@ -2,7 +2,7 @@
 
 PyCommand='#!/usr/bin/python3
 
-json_filename="kfold_data_results.json"
+json_filename="fold_status.json",#"kfold_data_results.json"
 
 model_list=["efficientnet_b3",
             "inception_resnet_v2",
@@ -18,6 +18,10 @@ info_list=[ "mean_val_categorical_accuracy",
             "mean_train_loss"];
 
 erro_bar=[("mean_val_categorical_accuracy","std_val_categorical_accuracy")];
+
+sort_by="val_categorical_accuracy";
+
+p_matrix="val_categorical_accuracy";
 
 sep=",";
 
@@ -64,8 +68,8 @@ export CUDA_VISIBLE_DEVICES=0
 ipynb-py-convert kfold_validation.ipynb kfold_validation.py
 
 #python3 kfold_validation.py --model 'mobilenet_v3'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
-python3 kfold_validation.py --model 'efficientnet_b3'     --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
-python3 kfold_validation.py --model 'inception_v3'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
+#python3 kfold_validation.py --model 'efficientnet_b3'     --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
+#python3 kfold_validation.py --model 'inception_v3'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 python3 kfold_validation.py --model 'inception_resnet_v2' --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 python3 kfold_validation.py --model 'resnet_v2_50'        --epochs 100  --batch-size 16 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir
 ##python3 kfold_validation.py --model 'custom1'             --epochs 200 --batch-size 64 --dataset-dir $InTrD --dataset-file $InTrF --dataset-name $DName --output-dir $OutDir 
