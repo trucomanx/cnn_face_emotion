@@ -226,7 +226,7 @@ def create_model_residual1(enable_summary=True,Nout=14):
     
     return model, target_size;
     
-def create_model_custom_inception(file_of_weight='',finetuning=True):
+def create_model_custom_inception(file_of_weight='',tuning_feature_extractor=True):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
@@ -255,7 +255,7 @@ def create_model_custom_inception(file_of_weight='',finetuning=True):
 
     ])
     
-    modelo.layers[0].trainable = finetuning
+    modelo.layers[0].trainable = tuning_feature_extractor
     
     print("\n\n")
     modelo.summary();
@@ -319,7 +319,7 @@ def create_model_custom1(file_of_weight=''):
     return modelo, target_size
     
     
-def create_model(file_of_weight='',model_type='mobilenet_v3',nout=7,finetuning = True):
+def create_model(file_of_weight='',model_type='mobilenet_v3',nout=7,tuning_feature_extractor = True):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
@@ -334,40 +334,40 @@ def create_model(file_of_weight='',model_type='mobilenet_v3',nout=7,finetuning =
         url='https://tfhub.dev/google/imagenet/mobilenet_v3_small_100_224/feature_vector/5';
         target_size=(224,224);
         multiple_layers = hub.KerasLayer(url,input_shape=(target_size[0],target_size[1],3))
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with mobilenet_v3");
         
     elif model_type=='resnet_v2_50':
         url='https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/5';
         target_size=(224,224);
         multiple_layers = hub.KerasLayer(url,input_shape=(target_size[0],target_size[1],3))
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with resnet_v2_50");
         
     elif model_type=='efficientnet_b3':
         url='https://tfhub.dev/tensorflow/efficientnet/b3/feature-vector/1';
         target_size=(300,300);
         multiple_layers = hub.KerasLayer(url,input_shape=(target_size[0],target_size[1],3))
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with efficientnet_b3");
         
     elif model_type=='inception_v3':
         url='https://tfhub.dev/google/tf2-preview/inception_v3/feature_vector/4';
         target_size=(299,299);
         multiple_layers = hub.KerasLayer(url,input_shape=(target_size[0],target_size[1],3))
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with inception_v3");
         
     elif model_type=='inception_resnet_v2':
         url='https://tfhub.dev/google/imagenet/inception_resnet_v2/feature_vector/5';
         target_size=(299,299);
         multiple_layers = hub.KerasLayer(url,input_shape=(target_size[0],target_size[1],3))
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with inception_resnet_v2");
         
     elif model_type=='custom1':
         multiple_layers, target_size = create_model_custom1(file_of_weight='');
-        multiple_layers.trainable = finetuning; #False
+        multiple_layers.trainable = tuning_feature_extractor; #False
         print("Loaded layer with custom1");
         
     elif model_type=='custom_dense1':
