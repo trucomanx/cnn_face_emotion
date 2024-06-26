@@ -24,7 +24,10 @@ sep=",";
 image_ext=".eps";
 '
 
-OutDir='/media/fernando/B0EA304AEA300EDA/Dados/Fernando/OUTPUTS/DOCTORADO2/cnn_emotion4_1'
+MachinePath='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
+#MachinePath='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
+
+OutDir=$MachinePath/'OUTPUTS/DOCTORADO2/cnn_face_emotion_1'
 
 FineT='false'
 
@@ -34,30 +37,30 @@ FineT='false'
 DName='ber2024-face'  
 
 if [ "$DName" = "fer2013" ]; then
-    InTrD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/fer2013/archive/train'
+    InTrD=$MachinePath/'DATASET/EXTERN/FACE/fer2013/archive/train'
     InTrF='training_labels.csv'
-    InTsD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/fer2013/archive/test'
+    InTsD=$MachinePath/'DATASET/EXTERN/FACE/fer2013/archive/test'
     InTsF='test_labels.csv'
 fi
 
 if [ "$DName" = "affectnet" ]; then
-    InTrD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/train_class'
+    InTrD=$MachinePath/'DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/train_class'
     InTrF='training_labels.csv'
-    InTsD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/val_class'
+    InTsD=$MachinePath/'DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/val_class'
     InTsF='labels.csv'
 fi
 
 if [ "$DName" = "mcfer_v1.0" ]; then
-    InTrD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/FACE-EMOTION/mcfer/archive/train'
+    InTrD=$MachinePath/'DATASET/TESE/FACE-EMOTION/mcfer/archive/train'
     InTrF='training_labels.csv'
-    InTsD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/FACE-EMOTION/mcfer/archive/test'
+    InTsD=$MachinePath/'DATASET/TESE/FACE-EMOTION/mcfer/archive/test'
     InTsF='test_labels.csv'
 fi
 
 if [ "$DName" = "ber2024-face" ]; then
-    InTrD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE'
+    InTrD=$MachinePath/'DATASET/TESE/BER/BER2024/BER2024-FACE'
     InTrF='train.csv'
-    InTsD='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE'
+    InTsD=$MachinePath/'DATASET/TESE/BER/BER2024/BER2024-FACE'
     InTsF='test.csv'
 fi
 
