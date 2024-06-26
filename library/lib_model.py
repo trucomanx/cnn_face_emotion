@@ -395,9 +395,20 @@ def create_model(file_of_weight='',model_type='mobilenet_v3',nout=7,tuning_featu
         tf.keras.layers.Dense(nout,activation='softmax')
     ])
     
-    #if os.path.exists(file_of_weight):
-    if (len(file_of_weight)!=0):
-        obj=modelo.load_weights(file_of_weight);
+       
+    if len(file_of_weight)!=0:
+        print("Loading the weights in:",file_of_weight);
+        if os.path.exists(file_of_weight):
+            #
+            try:
+                obj=modelo.load_weights(file_of_weight);
+                print("Loaded the weights in:",file_of_weight);
+            except Exception:
+                print("Error loading the weights in:",file_of_weight);
+                exit();
+        else:
+            print("Error loading, file no found:",file_of_weight);
+    
     
     return modelo, target_size
 
