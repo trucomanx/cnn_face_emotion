@@ -23,18 +23,18 @@ sep=",";
 
 image_ext=".eps";
 '
-
-MachinePath='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
+MachinePath='/media/fernando/Expansion/'
+#MachinePath='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
 #MachinePath='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$MachinePath/'OUTPUTS/DOCTORADO2/cnn_face_emotion_1'
 
-FineT='false'
+FineT='true'
 
 #DName='fer2013'  
 #DName='affectnet'  
-#DName='mcfer_v1.0'  
-DName='ber2024-face'  
+DName='mcfer_v1.0'  
+#DName='ber2024-face'  
 
 if [ "$DName" = "fer2013" ]; then
     InTrD=$MachinePath/'DATASET/EXTERN/FACE/fer2013/archive/train'
