@@ -23,5 +23,6 @@
     "model_type" : "mobilenet_v3",
     "batch_size" : 16,
     "epochs" : 3,
+    "path_of_weights":"",
     "output_base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/OUTPUTS/DOCTORADO2/cnn_face_emotion_1"
 }
