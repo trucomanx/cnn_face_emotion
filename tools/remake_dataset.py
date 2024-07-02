@@ -95,7 +95,7 @@ L0=len(total_list);
 for n in TQDM(range(L0)):
     img=load_img(total_list[n]);
     basename=os.path.basename(total_list[n]);
-    res=Clf.get_face_emotion_id_from_pil(img);
+    res=Clf.from_img_pil(img);
     
     local_output=os.path.join(output_dir,categories[res]);
     try: 
