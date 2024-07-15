@@ -2,7 +2,6 @@
 /.ipynb_checkpoints
 /library/.ipynb_checkpoints
 /logs/fit
-kfold_validation.py
-/library/FaceEmotion4Lib/__pycache__/__init__.cpython-310.pyc
-/library/FaceEmotion4Lib/__pycache__/lib_model.cpython-310.pyc
+/library/FaceEmotion4Lib/__pycache__
 /create/multiple_training_hodout.py
+

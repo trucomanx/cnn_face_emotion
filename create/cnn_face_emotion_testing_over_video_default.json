@@ -1,0 +1,7 @@
+{
+    "input_mp4_file" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/PATIENT-RECOGNITION/PATIENT-VIDEOS/dataset-toy/drhouse_mini_cut.mp4",
+    "model_type" : "efficientnet_b3",
+    "dataset_name" : "multiple_ber2024-face",
+    "output_base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/OUTPUTS/DOCTORADO2/cnn_face_emotion_1",
+    "model_weights_file" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/OUTPUTS/DOCTORADO2/cnn_face_emotion/multiple_ber2024-face/multiple_training_validation_holdout/efficientnet_b3/model_efficientnet_b3.h5"
+}
