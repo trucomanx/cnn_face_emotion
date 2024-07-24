@@ -81,11 +81,11 @@ export CUDA_VISIBLE_DEVICES=0
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-python3 training_holdout.py --model 'efficientnet_b3'     --fine-tuning $FineT --epochs 100 --batch-size  16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
-python3 training_holdout.py --model 'inception_resnet_v2' --fine-tuning $FineT --epochs 100 --batch-size  16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
-python3 training_holdout.py --model 'inception_v3'        --fine-tuning $FineT --epochs 100 --batch-size  16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
-python3 training_holdout.py --model 'mobilenet_v3'        --fine-tuning $FineT --epochs 100 --batch-size  16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
-python3 training_holdout.py --model 'resnet_v2_50'        --fine-tuning $FineT --epochs 100 --batch-size  16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
+python3 training_holdout.py --model 'efficientnet_b3'     --fine-tuning $FineT --epochs 200 --patience 30 --seed 0 --batch-size 16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
+python3 training_holdout.py --model 'inception_resnet_v2' --fine-tuning $FineT --epochs 200 --patience 30 --seed 0 --batch-size 16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
+python3 training_holdout.py --model 'inception_v3'        --fine-tuning $FineT --epochs 200 --patience 30 --seed 0 --batch-size 16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
+python3 training_holdout.py --model 'mobilenet_v3'        --fine-tuning $FineT --epochs 200 --patience 30 --seed 0 --batch-size 16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
+python3 training_holdout.py --model 'resnet_v2_50'        --fine-tuning $FineT --epochs 200 --patience 30 --seed 0 --batch-size 16 --dataset-train-dir $InTrD --dataset-train-file $InTrF --dataset-test-dir $InTsD --dataset-test-file $InTsF --dataset-name $DName --output-dir $OutDir
 
 rm -f training_holdout.py
 
