@@ -41,7 +41,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 ipynb-py-convert multiple_training_hodout.ipynb multiple_training_hodout.py
 
-python3 multiple_training_hodout.py --model 'efficientnet_b3'     --epochs 100 --patience 20 --batch-size  16 --seed 42 --dataset-name $DName --output-dir $OutDir
+#python3 multiple_training_hodout.py --model 'efficientnet_b3'     --epochs 100 --patience 20 --batch-size  16 --seed 42 --dataset-name $DName --output-dir $OutDir
 python3 multiple_training_hodout.py --model 'inception_resnet_v2' --epochs 100 --patience 20 --batch-size  16 --seed 42 --dataset-name $DName --output-dir $OutDir
 python3 multiple_training_hodout.py --model 'inception_v3'        --epochs 100 --patience 25 --batch-size  16 --seed 12 --dataset-name $DName --output-dir $OutDir
 python3 multiple_training_hodout.py --model 'mobilenet_v3'        --epochs 100 --patience 20 --batch-size  16 --seed 42 --dataset-name $DName --output-dir $OutDir

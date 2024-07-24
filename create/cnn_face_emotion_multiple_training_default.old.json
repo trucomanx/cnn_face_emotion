@@ -12,11 +12,6 @@
             "name" : "mcfer_v1.0"
         },
         {
-            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/FACE-EMOTION/mcfer/archive/train",
-            "labels_file" : "train.emotion4.csv",
-            "name" : "mcfer4_v1.0"
-        },
-        {
             "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE",
             "labels_file" : "train.csv",
             "name" : "ber2024-face"
