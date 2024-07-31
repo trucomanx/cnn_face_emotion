@@ -1,0 +1,41 @@
+{
+    "multiple_tuning":
+    [
+        {
+            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE",
+            "labels_file" : "train.csv",
+            "name" : "ber2024-face",
+            "learning_rate_coarse" : 0.0001,
+            "learning_rate_fine"   : 0.0001
+        },
+        {
+            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/train_class",
+            "labels_file" : "train.emotion4.csv",
+            "name" : "affectnet4",
+            "learning_rate_coarse" : 0.0001,
+            "learning_rate_fine"   : 0.0001
+        },
+        {
+            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/FACE-EMOTION/mcfer/archive/train",
+            "labels_file" : "train.emotion4.csv",
+            "name" : "mcfer4_v1.0",
+            "learning_rate_coarse" : 0.0001,
+            "learning_rate_fine"   : 0.0001
+        },
+        {
+            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE",
+            "labels_file" : "train.csv",
+            "name" : "ber2024-face",
+            "learning_rate_coarse" : 0.0001,
+            "learning_rate_fine"   : 0.0001
+        }
+    ],
+    "dataset_test_base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE",
+    "dataset_test_labels_file" : "test.csv",
+    "multiple_dataset_name" : "multiple_ber2024-face",
+    "model_type" : "mobilenet_v3",
+    "batch_size" : 16,
+    "epochs" : 3,
+    "path_of_weights":"",
+    "output_base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/OUTPUTS/DOCTORADO2/cnn_face_emotion_1"
+}
