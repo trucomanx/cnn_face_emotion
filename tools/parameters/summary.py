@@ -58,6 +58,7 @@ for item in DATA:
     info['target_size'] = item['target_size'];
     info['feature_extrator_params'] = model.layers[0].count_params();
     info['total_params'] = model.count_params();
+    info['output'] = model.layers[0].output_shape[-1];
     
     INFO.append(info);
     
@@ -73,16 +74,19 @@ import pandas as pd
 df = pd.DataFrame(INFO)
 
 # Selecionando as colunas 'model_type' e 'total_params'
-df = df[['model_type', 'total_params','target_size']]
+df = df[['model_type', 'total_params','target_size','output']]
 
-df = df.rename(columns={'model_type': 'Arquitetura', 'total_params': 'Número de parameters', 'target_size': 'Tamanho da entrada'})
+df = df.rename(columns={'model_type': 'Arquitetura', 
+                        'total_params': 'Número de parameters', 
+                        'target_size': 'Tamanho da entrada',
+                        'output': 'Saida'})
 
 # Substituindo todas as ocorrências de 'mobilenet_v3' por 'MobileNetV3'
 df = df.replace('efficientnet_b3', 'EfficientNet-B3')
-df = df.replace('inception_v3', 'InceptionV3')
-df = df.replace('inception_resnet_v2', 'Inception-ResNet-V2')
+df = df.replace('inception_v3', 'Inception-v3')
+df = df.replace('inception_resnet_v2', 'Inception-ResNet-v2')
 df = df.replace('mobilenet_v3', 'MobileNetV3')
-df = df.replace('resnet_v2_50', 'ResNet-V2-50')
+df = df.replace('resnet_v2_50', 'ResNet-v2-50')
 
 # Convertendo o DataFrame para formato LaTeX
 latex_table = df.to_latex(index=False, caption='Número total de parâmetros em cada arquitetura.', label='tab:model_params', column_format='lrr')

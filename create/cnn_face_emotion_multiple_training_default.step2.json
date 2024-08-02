@@ -2,13 +2,6 @@
     "multiple_tuning":
     [
         {
-            "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/TESE/BER/BER2024/BER2024-FACE",
-            "labels_file" : "train.csv",
-            "name" : "ber2024-face",
-            "learning_rate_coarse" : 0.0001,
-            "learning_rate_fine"   : 0.0001
-        },
-        {
             "base_dir" : "/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando/DATASET/EXTERN/FACE/AffectNet-Sample/input/affectnetsample/train_class",
             "labels_file" : "train.emotion4.csv",
             "name" : "affectnet4",
