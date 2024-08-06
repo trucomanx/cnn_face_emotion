@@ -1,10 +1,4 @@
-
-
-
-
-
 # Packaging
-
 
 Download the source code
 
@@ -12,8 +6,8 @@ Download the source code
     git clone https://github.com/trucomanx/cnn_face_emotion
 
 
-Download the models.
-    
+Download the models from cnn_face_emotion/multiple_ber2024-face/fine_tuning
+
     gdown 10PZUfBSJt3FXcNaA8UfvP6hGC46E0NoR
     unzip models.zip -d cnn_face_emotion/library/FaceEmotion4Lib/models
     
