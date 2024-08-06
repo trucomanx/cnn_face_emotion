@@ -78,7 +78,17 @@ class FaceEmotion4Classifier:
         """
         return mpp.evaluate_model_from_pil(self.model,img_pil, target_size=self.target_size);
 
-
+    def predict_pil(self,img_pil):
+        """Classify a image from a PIL object.
+        
+        Args:
+            img_pil: The PIL object.
+        
+        Returns:
+            int: The class of image.
+        """
+        return mpp.predict_from_pil(self.model,img_pil, target_size=self.target_size);
+        
     def target_labels(self):
         """Returns the categories of classifier.
         
