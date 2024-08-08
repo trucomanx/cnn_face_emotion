@@ -43,7 +43,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 ipynb-py-convert multiple_training_hodout.ipynb multiple_training_hodout.py
 
-for ModelType in 'mobilenet_v3' 'resnet_v2_50'; do
+for ModelType in 'efficientnet_b3' 'inception_v3' 'inception_resnet_v2' 'mobilenet_v3' 'resnet_v2_50'; do
     echo " "
     echo " "
     python3 multiple_training_hodout.py --model $ModelType \
