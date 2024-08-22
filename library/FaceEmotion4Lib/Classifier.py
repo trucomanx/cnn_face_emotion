@@ -89,6 +89,28 @@ class FaceEmotion4Classifier:
         """
         return mpp.predict_from_pil(self.model,img_pil, target_size=self.target_size);
         
+    def predict_pil_list(self,pil_list):
+        """Classify a image from a PIL object.
+        
+        Args:
+            pil_list: List of The PIL object.
+        
+        Returns:
+            matrix: numpy.ndarray. The class of image.
+        """
+        return mpp.predict_from_pil_list(self.model,pil_list, target_size=self.target_size);
+        
+    def from_img_pil_list(self,pil_list):
+        """Classify a image from a PIL object.
+        
+        Args:
+            pil_list: List of The PIL object.
+        
+        Returns:
+            vector: numpy.ndarray. The class of image.
+        """
+        return mpp.evaluate_model_from_pil_list(self.model,pil_list, target_size=self.target_size);
+        
     def target_labels(self):
         """Returns the categories of classifier.
         
