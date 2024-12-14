@@ -32,9 +32,8 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/cnn_face_emotion_full_1'
 
-#DName='ber2024-face' 
+#DName='ber2024-face' #
 DName='full2024-face'
-
 
 if [ "$DName" = "ber2024-face" ]; then
     InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FACE'
