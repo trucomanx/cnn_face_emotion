@@ -19,7 +19,7 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
 
     print(res);
 
-# Installation summary
+# Installation summary - Dataset BER2024
 
     git clone https://github.com/trucomanx/cnn_face_emotion
     gdown 10PZUfBSJt3FXcNaA8UfvP6hGC46E0NoR
@@ -28,5 +28,9 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
     python3 setup.py sdist
     pip3 install dist/FaceEmotion4Lib-*.tar.gz
 
+# Installation summary - Dataset FULL2024
+
+    git clone https://github.com/trucomanx/cnn_face_emotion
+    gdown XXXXXXXXX
     
 
