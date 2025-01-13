@@ -31,6 +31,10 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
 # Installation summary - Dataset FULL2024
 
     git clone https://github.com/trucomanx/cnn_face_emotion
-    gdown XXXXXXXXX
+    gdown 18ZTsD3FF0_1H3goacGPZwOgcLOKXhw0b
+    unzip models_face_full.zip -d cnn_face_emotion/library/FaceEmotion4Lib/models
+    cd cnn_face_emotion/library
+    python3 setup.py sdist
+    pip3 install dist/FaceEmotion4Lib-*.tar.gz
     
 
