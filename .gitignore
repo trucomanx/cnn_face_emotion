@@ -6,3 +6,4 @@
 /create/multiple_training_hodout.py
 /library/FaceEmotion4Lib/models/*.h5
 /create_full/training_holdout.py
+/create_full/.ipynb_checkpoints
